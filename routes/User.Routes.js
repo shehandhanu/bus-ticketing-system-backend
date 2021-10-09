@@ -6,7 +6,8 @@ const { registerUser,
     getUserProfile,
     logout,
     updateProfile,
-    checkUser } = require('../controllers/User.Controller');
+    checkUser,
+    allUsers } = require('../controllers/User.Controller');
 const { isAuthenticatedUser, authorizeRoles } = require('../utils/authenticator')
 const { getTotalEarning } = require('../controllers/Count.Controller')
 
@@ -29,7 +30,10 @@ router.route('/profileupdate').put(isAuthenticatedUser, updateProfile);
 //Check User Route 
 router.route('/checkuser/:id/:tid').get(isAuthenticatedUser, checkUser);
 
-//Logout
+//Admin data
 router.route('/admindata').get(getTotalEarning)
+
+//All users
+router.route('/allusers').get(allUsers)
 
 module.exports = router;

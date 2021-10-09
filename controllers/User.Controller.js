@@ -5,6 +5,19 @@ const Counts = require('../models/Count.Model')
 const sendToken = require('../utils/jwtToken');
 
 //Register User   => /api/v1/signup
+exports.allUsers = async (req, res, next) => {
+
+    const user = await User.find()
+
+    res.status(200).json({
+        success: true,
+        userCount: user.length
+
+    })
+
+}
+
+//Register User   => /api/v1/signup
 exports.registerUser = async (req, res, next) => {
 
     const user = await User.create(req.body)
