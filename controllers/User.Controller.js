@@ -125,6 +125,27 @@ exports.getUserProfile = async (req, res, next) => {
     })
 }
 
+//get current user trips   => /api/v1/user
+exports.getUserTrips = async (req, res, next) => {
+
+    let user = await User.findById(req.user.id).populate('trips.tripID')
+
+    const trips = user.trips;
+
+    if (!user) {
+        return res.status(401).json({
+            success: false,
+            user: [],
+            message: 'User Not Found'
+        })
+    }
+
+    res.status(200).json({
+        success: true,
+        trips
+    })
+}
+
 //logout user => /api/v1/logout
 exports.logout = async (req, res, next) => {
     res.cookie('token', null, {

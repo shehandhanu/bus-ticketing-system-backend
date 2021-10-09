@@ -7,7 +7,7 @@ const { registerUser,
     logout,
     updateProfile,
     checkUser,
-    allUsers } = require('../controllers/User.Controller');
+    allUsers, getUserTrips } = require('../controllers/User.Controller');
 const { isAuthenticatedUser, authorizeRoles } = require('../utils/authenticator')
 const { getTotalEarning } = require('../controllers/Count.Controller')
 
@@ -22,6 +22,9 @@ router.route('/logout').get(logout)
 
 //Get User Profile
 router.route('/profile').get(isAuthenticatedUser, getUserProfile);
+
+//Get User Trips
+router.route('/profiletrips').get(isAuthenticatedUser, getUserTrips);
 
 //Update User Profile
 router.route('/profileupdate').put(isAuthenticatedUser, updateProfile);
