@@ -17,9 +17,11 @@ app.use(
 //Import Routes
 const user = require("./routes/User.Routes");
 const journey = require("./routes/Journey.Routes")
+const timeTable = require("./routes/TimeTable.Routes");
 
 //use Routes
 app.use("/api/v1/user", user);
 app.use("/api/v1/journey", journey)
+app.use("/api/v1/route", timeTable);
 
 module.exports = app;
