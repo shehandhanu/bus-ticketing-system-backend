@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema({
         {
             tripID: {
                 type: mongoose.Schema.ObjectId,
-                ref: 'Trip'
+                ref: 'Journey'
             },
             isCompleted: {
                 type: Boolean,

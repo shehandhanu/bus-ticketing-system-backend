@@ -95,7 +95,7 @@ exports.updateProfile = async (req, res) => {
 //get current user  => /api/v1/user
 exports.getUserProfile = async (req, res, next) => {
 
-    let user = await User.findOne({ _id: req.user.id })
+    let user = await User.findById(req.user.id).populate('trips.tripID')
 
     if (!user) {
         return res.status(401).json({
