@@ -1,5 +1,6 @@
 const Journey = require('../models/Journey.Model')
 const User = require('../models/User.Model')
+const Counts = require('../models/Count.Model')
 
 //Add Route
 exports.addRoute = async (req, res) => {
@@ -88,6 +89,89 @@ exports.addPassengersJourney = async (req, res, next) => {
 
             user = await User.findByIdAndUpdate(req.user.id, { AccountBalance: user.AccountBalance - journey.price })
 
+            let datexx = new Date(Date.now())
+            let month = datexx.getMonth() + 1
+
+            const counts = await Counts.find()
+            const countx = counts[0]
+
+            let price = 0
+
+            switch (month) {
+                case 1:
+                    {
+                        price = countx.monthEarning.January.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.January.Earning': price + journey.price })
+                        break;
+                    }
+                case 2:
+                    {
+                        price = countx.monthEarning.February.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.February.Earning': price + journey.price })
+                        break;
+                    }
+                case 3:
+                    {
+                        price = countx.monthEarning.March.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.March.Earning': price + journey.price })
+                        break;
+                    }
+                case 4:
+                    {
+                        price = countx.monthEarning.April.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.April.Earning': price + journey.price })
+                        break;
+                    }
+                case 5:
+                    {
+                        price = countx.monthEarning.May.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.May.Earning': price + journey.price })
+                        break;
+                    }
+                case 6:
+                    {
+                        price = countx.monthEarning.June.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.June.Earning': price + journey.price })
+                        break;
+                    }
+                case 7:
+                    {
+                        price = countx.monthEarning.July.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.July.Earning': price + journey.price })
+                        break;
+                    }
+                case 8:
+                    {
+                        price = countx.monthEarning.August.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.August.Earning': price + journey.price })
+                        break;
+                    }
+                case 9:
+                    {
+                        price = countx.monthEarning.September.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.September.Earning': price + journey.price })
+                        break;
+                    }
+                case 10:
+                    {
+                        price = countx.monthEarning.October.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.October.Earning': price + journey.price })
+                        break;
+                    }
+                case 11:
+                    {
+                        price = countx.monthEarning.November.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.November.Earning': price + journey.price })
+                        break;
+                    }
+                case 12:
+                    {
+                        price = countx.monthEarning.December.Earning
+                        let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.December.Earning': price + journey.price })
+                        break;
+                    }
+            }
+
             res.status(200).json({
                 success: true,
                 journey,
@@ -120,6 +204,90 @@ exports.removePassengersJourney = async (req, res, next) => {
     journey = await Journey.findByIdAndUpdate(req.params.id, { countPassengers: journey.countPassengers - 1 })
 
     user = await User.findByIdAndUpdate(req.user.id, { AccountBalance: user.AccountBalance + (journey.price * 0.5) })
+
+    let datexx = new Date(Date.now())
+    let month = datexx.getMonth() + 1
+
+    const counts = await Counts.find()
+    const countx = counts[0]
+
+    let price = 0
+
+    switch (month) {
+        case 1:
+            {
+                price = countx.monthEarning.January.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.January.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 2:
+            {
+                price = countx.monthEarning.February.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.February.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 3:
+            {
+                price = countx.monthEarning.March.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.March.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 4:
+            {
+                price = countx.monthEarning.April.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.April.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 5:
+            {
+                price = countx.monthEarning.May.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.May.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 6:
+            {
+                price = countx.monthEarning.June.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.June.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 7:
+            {
+                price = countx.monthEarning.July.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.July.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 8:
+            {
+                price = countx.monthEarning.August.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.August.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 9:
+            {
+                price = countx.monthEarning.September.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.September.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 10:
+            {
+                price = countx.monthEarning.October.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.October.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 11:
+            {
+                price = countx.monthEarning.November.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.November.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+        case 12:
+            {
+                price = countx.monthEarning.December.Earning
+                let countsx = await Counts.findOneAndUpdate({ _id: countx._id }, { 'monthEarning.December.Earning': price - (journey.price * 0.5) })
+                break;
+            }
+    }
+
 
     res.status(200).json({
         success: true,

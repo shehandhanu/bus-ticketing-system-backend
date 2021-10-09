@@ -1,5 +1,6 @@
 const User = require('../models/User.Model')
 const Journey = require('../models/Journey.Model')
+const Counts = require('../models/Count.Model')
 
 const sendToken = require('../utils/jwtToken');
 
@@ -136,6 +137,10 @@ exports.checkUser = async (req, res) => {
     }
 
     const isApproved = await Journey.find({ _id: req.params.tid, "passengers.passengerID": req.params.id })
+
+    const counts = await Counts.find()
+
+    let countsx = await Counts.findOneAndUpdate({ _id: counts[0]._id }, { 'inspectionCount': counts[0].inspectionCount + 1 })
 
     if (isApproved.length == 0) {
         res.status(404).json({

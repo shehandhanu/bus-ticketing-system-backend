@@ -18,7 +18,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please Enter Your Password'],
         minLength: [5, 'Your Password must be longer than 5 characters'],
-        select: false
     },
     email: {
         type: String,
